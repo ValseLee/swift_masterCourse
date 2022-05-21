@@ -18,7 +18,7 @@ let c: Int = a;
 var num: Int = 6;
 
 switch num {
-    case let a:Int: // num을 a에 재할당
+    case let a:Int // num을 a에 재할당
     print("숫자 : \(a)");
     default:
     break;
