@@ -32,7 +32,7 @@ var matrix: (Int, Int) = (9,0)
 switch matrix {
     case let (x: Int,y: Int) where x == y: // 조건에 따라 튜플 케이스를 처리할 때 이렇게 쓰고
     print("\(x), \(y)는 현재 y = x 1차 함수 그래프 위에 있음")
-    case (let x: Int, let y: Int): // 각 요소를 케이스 내에서 가공하려 할때는 이렇게 쓴다.
+    case (let x, let y): // 각 요소를 케이스 내에서 가공하려 할때는 이렇게 쓴다.
     print("좌표 : \(x), \(y)")
     case (let distance, 0), (0, let distance): // 두 좌표 중 하나가 0일 때
     print("X, Y축 위에 좌표가 위치하고 있고 각 거리는 \(distance)만큼")
@@ -42,3 +42,4 @@ switch matrix {
 }
 
 // why should we use Tuple
+// function에서 설명예정
