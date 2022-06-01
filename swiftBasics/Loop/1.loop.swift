@@ -21,8 +21,31 @@ for _ in 0 ... 10 {
 }
 
 // you can use it like this meaning 'this str is just tmp'
-let _ = "str"
+_ = "str"
 
-for i in (1...10).reversed() {
+for i in (1 ... 10).reversed() {
     print(i)
+}
+
+// of course it can be used for Collection(=list)
+
+let list = ["Swift", "Programming", "Language"]
+for str in list {
+    print(str)
+}
+
+for chr in "Hello" {
+    print(chr)
+}
+
+// apply
+for number in (1 ... 5).reversed() {
+    print(number)
+}
+
+// stride
+// stride(from: 1, to: 10, by: 2)
+// 홀수만 프린트
+for number in stride(from: 1, to: 15, by: 2) {
+    print(number)
 }
