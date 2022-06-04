@@ -39,3 +39,7 @@ func sayHello() {
 // so what is the diff between void 'type' func and return func
 // you can consider return func as that specific 'return'
 //
+
+// what about tuple?
+// as you now know, func has only one return
+// but.. you can return a bunch of return in tuple
