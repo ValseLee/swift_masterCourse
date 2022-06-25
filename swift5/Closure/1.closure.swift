@@ -52,3 +52,32 @@ let closureType = { (param: String) -> String in
 }
 
 print(closureType("Steve")) // Steve, Hihi
+
+/*
+ - 함수와의 차이
+ 1.클로저는 아웃풋 리턴 타입을 써주지 않아도 된다.
+ 2. 클로저의 파라미터 인풋이 이전에 명시가 되어 있다면, 파라미터 인풋의 타입도 생략할 수 있다.
+ 3. { (parameter) in return } 으로 많이 쓰인다.
+ */
+
+// 일반 함수
+func add(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+// 클로저
+let _: (Int, Int) -> Int = { a, b in
+    let result = a + b
+    return result
+}
+
+// examples
+let ex1 = { (str: String) in "Hello, \(str)" }
+let ex2: (String) -> String = { str in "Hello, \(str)" }
+let ex3 = {
+    print("no input, no output")
+}
+
+// 강한 타입추론
+// 문자열과 더할 수 있는 게 문자열 뿐이니까, param이 문자열일 거라고 알아서 추론해주는 똑똑한 컴파일러
+let ex4 = { param in param + "!" }
