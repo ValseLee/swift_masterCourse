@@ -92,3 +92,14 @@ struct FlyingMuseum1 {
         flyingObj.fly()
     }
 }
+
+// Subscript
+protocol Sub {
+    subscript(_: Int) -> Int { get }
+}
+
+struct Data: Sub {
+    subscript(_: Int) -> {
+        return 0
+    }
+}
