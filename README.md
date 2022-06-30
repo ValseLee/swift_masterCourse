@@ -13,4 +13,4 @@
 ---
 
 ### 공부를 위한 추가 자료들
-!(swift의 메모리)[https://stackoverflow.com/questions/27441456/swift-stack-and-heap-understanding].
+- [swift의 메모리](https://stackoverflow.com/questions/27441456/swift-stack-and-heap-understanding)
