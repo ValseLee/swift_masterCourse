@@ -87,11 +87,11 @@ task.resume()
  Codable = 양방향 모두 가능
  *****/
 
-// let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+// let MovieData = try? newJSONDecoder().decode(MovieData.self, from: jsonData)
 
-// MARK: - Welcome
+// MARK: - MovieData
 
-struct Welcome: Codable {
+struct MovieData: Codable {
     let boxOfficeResult: BoxOfficeResult
 }
 
