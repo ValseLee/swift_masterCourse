@@ -37,7 +37,7 @@ let session = URLSession(configuration: .default)
 // let session = URLSession.shared
 
 // 3. 구조체로 만들어진 데이터를 이제 만져보자.
-session.dataTask(with: structURL) { data, _, error in
+let task = session.dataTask(with: structURL) { data, _, error in
     if error != nil {
         print(error.localizedDescription)
         return
@@ -50,3 +50,6 @@ session.dataTask(with: structURL) { data, _, error in
         print(str)
     }
 }
+
+// 4. 데이터를 다 만졌다면, 시작
+task.resume()
