@@ -16,3 +16,6 @@
 
 ### 공부를 위한 추가 자료들
 - [swift의 메모리](https://stackoverflow.com/questions/27441456/swift-stack-and-heap-understanding)
+- [HTTP의 변천사](https://www.youtube.com/watch?v=mQAsKYMzQaU)
+- [REST API](https://www.youtube.com/watch?v=RP_f5dMoHFc)
+- [Naver D2](https://tv.naver.com/naverd2/playlists)
