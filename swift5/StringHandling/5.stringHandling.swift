@@ -116,3 +116,56 @@ print(greeting[strRange]) // Tag!
 // 정수처럼 거리 측정이 가능
 var distance = greeting.distance(from: lower, to: upper)
 print(distance) // 2
+
+/*
+ 문자열 삽입과 교체, 삭제
+ */
+
+var welcome = "Hello"
+print(welcome)
+welcome.insert("!", at: welcome.endIndex)
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+
+if let range = welcome.range(of: " there") {
+    welcome.replaceSubrange(range, with: " Swift")
+}
+
+print(welcome)
+
+// 원본유지 교체
+var newWelcome = welcome.replacingOccurrences(of: "Swift", with: "World")
+print(welcome) // Hello Swift!
+print(newWelcome) // Hello World!
+
+newWelcome = welcome.replacingOccurrences(of: "swift", with: "new World", options: [.caseInsensitive], range: nil)
+print(newWelcome) // Hello new World!
+
+// append
+welcome.append("!?")
+print(welcome) // Hello Swift!!?
+
+// remove
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+print(welcome) // Hello Swift!!
+// 메모리를 유지할건지?
+welcome.removeAll(keepingCapacity: true)
+
+var string = "Hello world"
+if let index = string.firstIndex(of: " ") {
+    string.insert(contentsOf: " super", at: index)
+}
+
+print(string) // Hello super world
+
+if let index = string.firstIndex(of: " ") {
+    let range = index ... string.index(index, offsetBy: 5)
+    string.removeSubrange(range)
+}
+
+print(string) // Hello world
+
+if let range = string.range(of: " world") {
+    string.removeSubrange(range)
+}
+
+print(string) // Hello
