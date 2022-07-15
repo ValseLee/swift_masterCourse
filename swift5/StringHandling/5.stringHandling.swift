@@ -169,3 +169,99 @@ if let range = string.range(of: " world") {
 }
 
 print(string) // Hello
+
+// 문자열 비교
+print("swift" == "Swift") // false
+print("swift" != "Swift") // true
+
+// 대소비교는 유니코드순서를 비교한다.
+print("swift" < "Swift") // false
+print("swift" <= "Swift") // false
+print("swift".lowercased() == "Swift".lowercased()) // true
+
+/*
+ 대소문자를 무시하고 비교하는 메소드
+ 새로운 열거형 타입인 NSComparisonResult 리턴한다.
+ .orderedSame : 동일한 순서
+ .orderedAscending : 오름차순
+ .orderedDescending : 내림차순
+
+ 단순 결과비교가 아니라 결과를 오름차, 내림차순으로 확인할 수 있다.
+ 이 오름차, 내림차를 나누는 기준은 '크기'이다.
+ 좌항이 더 크면 내림차, 우항이 더 크면 오름차
+ 두 항이 일치하면 순서가 동일하다고 나온다.
+ */
+
+var a = "swift"
+var b = "Swift"
+var result = a.caseInsensitiveCompare(b) // NSComparisonResult
+
+switch result {
+case .orderedSame:
+    print("순서동일") // ✅
+case .orderedDescending:
+    print("내림차")
+case .orderedAscending:
+    print("오름차")
+}
+
+// 일치확인 메소드
+var name = "Ko Ki"
+
+var result2 = name.compare("Ko Ki Ko", options: [.caseInsensitive])
+switch result2 {
+case .orderedSame:
+    print("순서동일")
+case .orderedDescending:
+    print("내림차") // ✅
+case .orderedAscending:
+    print("오름차")
+}
+
+/*
+ 문자열 비교 옵션의 종류
+ [String.CompareOptions struct]
+
+ .caseInsensitive // 대소문자 무시 ✨
+ .diacriticInsensitive // 발음구별기호 무시
+ .widthInsensitive // 글자 넓이 무시
+
+ .forcedOrdering // 강제 오름차, 내림차
+ .literal // 유니코드 자체 비교
+ .numeric // 숫자 전체를 인식 비교
+
+ .anchored // 접두어 고정한 후 비교
+ .backwards // 문자 뒷자리부터
+
+ .regularExpression // 정규표현식 검증 비교 ✨
+
+ options 는 배열로 옵션을 전달하는데, ComapreOptions 구조체는 OptionSet 프로토콜을 채택한다.
+ 덕분에 위의 옵션을 여러 배열로 전달할 수 있다.
+ */
+
+// .diacriticInsensitive
+"café".compare("cafe", options: [.diacriticInsensitive]) == .orderedSame
+
+// .widthInsensitive : 일본어 문자에서 주로 사용됨
+"ァ".compare("ｧ", options: [.widthInsensitive]) == .orderedSame
+
+// .forcedOrdering
+"Hello".compare("hello", options: [.forcedOrdering, .caseInsensitive]) == .orderedAscending
+
+// .numeric : 숫자를 자릿수가 아니라 전체로 인식하여 비교
+// 9보다 10이 크다. 10의 앞 자리 1 때문에 10이 뒤로 정렬되지 않도록.
+"album_photo9.jpg".compare("album_photo10.jpg", options: [.numeric]) == .orderedAscending
+
+// .literal : 유니코드 문자를 그대로 비교!!
+"\u{D55C}".compare("\u{1112}\u{1161}\u{11AB}", options: [.literal]) == .orderedSame
+// "한"(완성형)     "ㅎ+ㅏ+ㄴ"(조합형) // orderedSame == false✨
+
+// .anchored : 접두어부터 비교
+if let _ = "Hello, Swift".range(of: "Hello", options: [.anchored]) { // 범위리턴 ===> 접두어 기능
+    print("접두어 일치")
+}
+
+// .anchored + .backwards == 접미어를 비교
+if let _ = "Hello, Swift".range(of: "Swift", options: [.anchored, .backwards]) { // ===> 접미어 기능
+    print("접미어 일치")
+}
