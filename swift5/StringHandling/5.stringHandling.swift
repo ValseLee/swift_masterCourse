@@ -281,3 +281,72 @@ string2.commonPrefix(with: "hello", options: [.caseInsensitive]) // Hello
 // 앞에서 몇 글자를 지우고 리턴
 print(string2.dropFirst(3)) // lo, world
 print(string2.dropLast(8)) // Hell 😈
+
+/* 문자의 검색과 제거
+ trimmingCharacters(in: [CharacterSet])
+
+ components(separtedBy: [CharacterSet])
+ 중간 문자를 지우기 위해 지우고자 하는 문자를 기준으로 배열을 만들어서 다시 문자열로 반환할 수 있다.
+ ✨ 지우고 싶은 문자는 배열로 전달할 수 있다.
+
+ split(separator:)
+ 서브스트링 배열로 리턴한다. 클로저를 사용할 수 있다.
+
+ rangeOfCharacter(from: [CharacterSet])
+ 문자집합을 문자열에 검색하여 인덱스(범위)를 리턴한다.
+ 해당 인덱스로 문자열 서브스크립트가 가능하다.
+ */
+
+var email = " my-email@example.com. "
+
+// 문자열의 공백을 문자 배열을 전달하여 앞뒤에서 제거
+var trimmed = email.trimmingCharacters(in: [" ", "."])
+print(trimmed) // my-email@example.com
+
+var trimmed2 = email.trimmingCharacters(in: .whitespaces)
+print(trimmed2) // my-email@example.com.
+
+var someStr = "?Sw!ift!"
+var trimmedStr = someStr.trimmingCharacters(in: ["?", "!"])
+print(trimmedStr) // Sw!ift
+
+// 특정 문자로 나뉘는 문자들을 배열로 만든 후, 다시 문자열로 합친다.
+var name2 = " Niee lljo dan"
+var removedName = name2.components(separatedBy: " ").joined()
+print(removedName) // Nieelljodan
+
+var phoneNum = "010-1111-2222"
+var removedNum = phoneNum.components(separatedBy: "-").joined()
+print(removedNum) // 01011112222
+
+var strChunk = "1+2=3&2*5"
+var removedChunk = strChunk.components(separatedBy: ["+", "=", "&", "*"]).joined()
+print(removedChunk) // 12325
+
+var splitStr = "Hello Swift"
+var splitArr = splitStr.split(separator: " ")
+print(splitArr) // ["Hello", "Swift"]
+print(splitArr.joined()) // HelloSwift
+
+var splitArr2 = splitStr.split { chr in
+    chr == " "
+}
+
+/*
+ [CharacterSet] : 유니코드 기준으로 작성된 문자 집합
+ 배열로 직접 써서 전달하기보다 API를 쓰는 게 가독성이 높다.
+
+ .symbols : 기호 ["?", "!","."] 이런 배열로 전달할 필요 없다.
+ .alphanumerics : 문자 + 숫자
+ .decimalDigits : 10진법
+ .letters : 문자
+ .lowercaseLetters : 소문자모음
+ .uppercaseLetters : 대문자모음
+ .whitespaces : 공백문자모음
+ */
+
+// 문자열의 검색
+name = "hello+world"
+if let range = name.rangeOfCharacter(from: .symbols) {
+    print(name[range]) // +
+}
