@@ -265,3 +265,19 @@ if let _ = "Hello, Swift".range(of: "Hello", options: [.anchored]) { // 범위�
 if let _ = "Hello, Swift".range(of: "Swift", options: [.anchored, .backwards]) { // ===> 접미어 기능
     print("접미어 일치")
 }
+
+// 문자열 포함여부 확인
+var string2 = "Hello, world"
+string2.contains("Hello") // true
+string2.lowercased().contains("hel") // true
+string2.hasPrefix("Hello") // true
+string2.hasSuffix("rld") // true
+string2.prefix(2) // He
+string2.suffix(2) // ld
+
+// 공통 접두-접미어 리턴
+string2.commonPrefix(with: "hello", options: [.caseInsensitive]) // Hello
+
+// 앞에서 몇 글자를 지우고 리턴
+print(string2.dropFirst(3)) // lo, world
+print(string2.dropLast(8)) // Hell 😈
