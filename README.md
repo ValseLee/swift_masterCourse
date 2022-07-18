@@ -15,6 +15,7 @@
 5. 메모리 관리 전 단원
   - 1.5회독 : 220709
   - [벨로그](https://velog.io/@valse/TIL-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EA%B4%80%EB%A6%AC%EB%8A%94-%EB%82%AD%EB%A7%8C%EC%A0%81%EC%9D%B4%EB%8B%A4.-1)
+6. 제네릭(1회독 : 220712)
 
 ---
 
