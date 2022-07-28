@@ -27,3 +27,4 @@
 - [REST API](https://www.youtube.com/watch?v=RP_f5dMoHFc)
 - [Naver D2](https://tv.naver.com/naverd2/playlists)
 - [iOS Networking](https://techblog.woowahan.com/2704/)
+- [iOS 레이아웃 생명주기](https://medium.com/mj-studio/%EB%B2%88%EC%97%AD-ios-%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83%EC%9D%98-%EB%AF%B8%EC%8A%A4%ED%84%B0%EB%A6%AC%EB%A5%BC-%ED%8C%8C%ED%97%A4%EC%B9%98%EB%8B%A4-2cfa99e942f9)
